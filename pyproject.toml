@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "一键安装稳定的 SSH 反向隧道 systemd 服务"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT"
+license = { file = "LICENSE" }
 
 [project.scripts]
 stable-tunnel = "stable_tunnel.cli:main"
