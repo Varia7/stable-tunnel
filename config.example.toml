@@ -1,0 +1,21 @@
+# stable-tunnel 配置示例
+# 复制到 ~/.config/stable-tunnel/config.toml 并修改
+
+[tunnel]
+remote_host = "your-jump-host"   # ~/.ssh/config 里的 Host 名，或 user@host
+remote_port = 10023              # 跳板机上对外监听的端口
+local_host = "127.0.0.1"
+local_port = 22                  # 本机要暴露的服务端口（通常是 SSH 22）
+user = "your-user"               # systemd 服务运行用户，留空则使用当前用户
+
+[ssh]
+connect_timeout = 3
+server_alive_interval = 3
+server_alive_count_max = 2
+strict_host_key_checking = false # true 时使用 known_hosts 校验
+ssh_verbose = false                # true 时 ssh 加 -v（调试用）
+
+[service]
+restart_sec = 5
+clean_remote_before_start = true # 启动前清理远端 stale sshd 占用
+install_dir = "/usr/local/bin"
