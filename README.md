@@ -23,7 +23,7 @@
 ## 前置条件
 
 - Linux + systemd
-- Python 3.11+
+- Python 3.10+
 - 本机到跳板机已配置 **免密 SSH**（`~/.ssh/config` 中的 Host 名可直接用作 `remote_host`）
 - 跳板机 `sshd` 允许反向转发（通常默认 `AllowTcpForwarding yes`）
 

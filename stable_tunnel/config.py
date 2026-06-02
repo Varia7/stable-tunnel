@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import getpass
-import sys
-import tomllib
 from dataclasses import asdict, dataclass, fields
 from pathlib import Path
 from typing import Any
+
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
 
 SERVICE_NAME = "ssh-reverse-tunnel"
 CLEAN_SCRIPT_NAME = "stable-tunnel-clean-remote-port.sh"
@@ -128,9 +131,3 @@ def merge_cli_overrides(config: TunnelConfig, overrides: dict[str, Any]) -> Tunn
     merged = TunnelConfig(**data)
     merged.validate()
     return merged
-
-
-def ensure_tomllib() -> None:
-    if sys.version_info < (3, 11):
-        print("需要 Python 3.11+（使用内置 tomllib 读取配置）", file=sys.stderr)
-        sys.exit(1)

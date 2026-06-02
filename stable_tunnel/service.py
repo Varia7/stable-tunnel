@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.resources
 import os
 import shutil
 import subprocess
@@ -11,7 +10,7 @@ from stable_tunnel.config import CLEAN_SCRIPT_NAME, TunnelConfig
 
 
 def _template_path(name: str) -> Path:
-    return Path(importlib.resources.files("stable_tunnel") / "templates" / name)
+    return Path(__file__).resolve().parent / "templates" / name
 
 
 def render_service_unit(config: TunnelConfig) -> str:

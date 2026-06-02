@@ -11,7 +11,6 @@ from stable_tunnel.config import (
     CONFIG_DIR,
     DEFAULT_CONFIG_PATH,
     TunnelConfig,
-    ensure_tomllib,
     load_config,
     merge_cli_overrides,
     save_config,
@@ -196,7 +195,6 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
-    ensure_tomllib()
     parser = build_parser()
     args = parser.parse_args()
     sys.exit(args.func(args))
